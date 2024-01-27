@@ -1,13 +1,15 @@
-import React,{useState,useEffect} from 'react'
-import {Link} from "react-router-dom";
+import React,{useState} from 'react'
+import {Link,useNavigate} from "react-router-dom";
 import style from "styled-components";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import logo from "../assets/loader.gif"
+import axios from 'axios';
 
 function Register() {
-
+const navigate=useNavigate();
 const [cred,setCred]=useState({
-  name:"etrterrteyetry",
+  name:"",
   email:"",
   password:"",
   cpassword:""
@@ -21,14 +23,33 @@ const tobj={
   theme:"dark"
 }
 
-const handleSubmit=async (e)=>{
+const handleSubmit=  async (e)=>{
 e.preventDefault();
-if(handleValidation()){
-  alert("all correct");
+if(handleValidation){
+ 
+ try{ 
+  const {data} = await axios.post('http://localhost:5000/auth',{
+  name: cred.name,
+  email:cred.email,
+  password: cred.password,
+})
+if (data.success) {
+    alert(1);
+    localStorage.setItem('user-data', JSON.stringify(data.user));
+    navigate('/login');
+}
+else if(!data.success) {
+    toast.error(data.error, tobj);
+}
+}catch(error){
+  toast.error("user exists", tobj);
+  
+  console.log({error:error.message});
+}
 }
 };
 
-const handleValidation=()=>{
+const handleValidation= async ()=>{
   const {name,password,cpassword}=cred;
 
    if(name.length<3)
@@ -62,7 +83,7 @@ const handleChange=(e)=>{
     <Formcontainer>
     <form onSubmit={(e)=>handleSubmit(e)}>
         <div className="brand">
-        <img src="" alt=""/>
+        <img src={logo} alt=""/>
         <h1>Chat Me</h1>
         </div>
         
@@ -79,6 +100,7 @@ const handleChange=(e)=>{
         placeholder="Email"
         name="email"
         value={cred.email}
+        required
         onChange={handleChange}
         />
         <input

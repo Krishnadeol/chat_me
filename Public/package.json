@@ -14,7 +14,8 @@
     "react-toastify": "^10.0.4",
     "style-components": "^0.1.0",
     "styled-components": "^6.1.8",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "type":"module"
   },
   "scripts": {
     "start": "react-scripts start",
