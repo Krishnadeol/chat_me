@@ -23,10 +23,10 @@ const tobj={
   theme:"dark"
 }
 
+
 const handleSubmit=  async (e)=>{
 e.preventDefault();
 if(handleValidation){
- 
  try{ 
   const {data} = await axios.post('http://localhost:5000/auth',{
   name: cred.name,
@@ -34,7 +34,7 @@ if(handleValidation){
   password: cred.password,
 })
 if (data.success) {
-    alert(1);
+
     localStorage.setItem('user-data', JSON.stringify(data.user));
     navigate('/login');
 }
