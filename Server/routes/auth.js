@@ -10,7 +10,7 @@ const JWT_SECRET = process.env.JWT_SECRET;
 
 ///////////////////////////////////////////////////////////////////////// for registration 
 router.post('/', [    
-    body('name', 'Enter a valid ame').isLength({ min: 4 }),
+    body('name', 'Enter a valid name').isLength({ min: 4 }),
     body('email', 'Enter a valid Email').isEmail(),
     body('password', 'Password must have at least 5 characters').isLength({ min: 5 }),
 ], async (req, res) => {
@@ -18,7 +18,7 @@ router.post('/', [
     let success = false;
 
     if (!errors.isEmpty()) {
-        return res.json({ successn, errors: errors.array() });
+        return res.json({ success, errors: errors.array() });
     }
 
     try {
@@ -106,3 +106,4 @@ router.post('/login', [
     }
 
   })
+  module.exports = router;

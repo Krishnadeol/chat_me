@@ -10,7 +10,7 @@ app.use(express.json());
 // routes =>
 
 app.use('/auth',require('./routes/auth'));
-
+app.use('/setA',require('./routes/setA'));
 
 
 
