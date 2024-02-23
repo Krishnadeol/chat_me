@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Register from './pages/Register';
 import Login from './pages/Login'
 import SetAvatar from './pages/SetAvatar';
+import Chat from './pages/chat';
 function App() {
   return (
     <div>
@@ -13,6 +14,7 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login/>} />
           <Route path="/setAvatar" element={<SetAvatar/>} />
+          <Route path="/chats" element={<Chat/>}/>
         </Routes>
       </BrowserRouter>
     </div>

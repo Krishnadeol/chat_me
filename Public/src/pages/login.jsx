@@ -20,7 +20,7 @@ const tobj={
   draggable:true, 
 }
 useEffect(() => {
-  if (localStorage.getItem('user-data')) {
+  if (localStorage.getItem('chatme-user-data')) {
     navigate("/");
   }
 }, [navigate]);

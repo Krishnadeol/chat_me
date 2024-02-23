@@ -11,7 +11,7 @@ app.use(express.json());
 
 app.use('/auth',require('./routes/auth'));
 app.use('/setA',require('./routes/setA'));
-
+app.use('/getcontact',require('./routes/getc'));
 
 
 const server = app.listen(process.env.PORT, () =>

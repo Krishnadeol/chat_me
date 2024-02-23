@@ -28,9 +28,8 @@ import {Buffer} from 'buffer'
     toast.error("please select an avatar",tobj);
     }
     else{
-     
       // for getting the infortmation stored in local storage 
-      const user=await JSON.parse(localStorage.getItem('user-data'));
+      const user=await JSON.parse(localStorage.getItem('chatme-user-data'));
       
       // api call for setting image in backend 
       const {data}=await axios.post(`http://localhost:5000/setA/${user._id}`,{
@@ -41,7 +40,7 @@ import {Buffer} from 'buffer'
        if(data.isSet){
         user.isAvatarSet=true;
         user.avatarImage=data.image;
-        localStorage.setItem('user-data',JSON.stringify(user));
+        localStorage.setItem('chatme-user-data',JSON.stringify(user));
         navigate('/');
       }
       else toast.error("Error setting avatar, please try again",tobj);

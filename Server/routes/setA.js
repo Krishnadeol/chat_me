@@ -11,7 +11,7 @@ router.post('/', async (req, res) => {
         avatarImage:im
      })
      
-     res.json({
+    return  res.json({
         isSet:userData.isAvatarSet,
         image: userData.avatarImage
     })

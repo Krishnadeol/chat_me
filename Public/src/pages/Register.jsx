@@ -35,7 +35,7 @@ if(handleValidation){
 })
 if (data.success) {
 
-    localStorage.setItem('user-data', JSON.stringify(data.user));
+    localStorage.setItem('chatme-user-data', JSON.stringify(data.user));
     navigate('/login');
 }
 else if(!data.success) {
